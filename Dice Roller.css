@@ -1,0 +1,68 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
+    background-image: url("images/gemstone-phoenix-bloodstone-walnut-hex-chest-product.jpg");
+    background-size: cover;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 250%;
+    padding-bottom: 20px;
+}
+
+div {
+    background-color: rgba(0, 0, 0, .6);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+}
+
+h1 {
+    color: white;
+}
+
+#message-el {
+    font-style: italic;
+}
+
+label {
+    width: 25%;
+    font-size: 20px;
+    color: white;
+}
+
+input {
+    width: 25%;
+    font-size: 20px;
+    background: rgb(50,50,50);
+    color: white;
+}
+
+p {
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+
+button {
+    color: white;
+    width: 150px;
+    background: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 1px solid grey;
+}
