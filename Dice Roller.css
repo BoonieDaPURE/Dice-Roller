@@ -1,10 +1,12 @@
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
-    background-image: url("images/gemstone-phoenix-bloodstone-walnut-hex-chest-product.jpg");
+    background-image: url("images/background.jpg");
     background-size: cover;
     font-weight: bold;
     color: white;
     text-align: center;
+    min-width: 300px;
+    min-height: 450px;
 }
 
 h1 {
@@ -36,13 +38,13 @@ h1 {
 }
 
 label {
-    width: 25%;
+    width: 40%;
     font-size: 20px;
     color: white;
 }
 
 input {
-    width: 20%;
+    width: 50px;
     font-size: 20px;
     background: rgb(50,50,50);
     color: white;

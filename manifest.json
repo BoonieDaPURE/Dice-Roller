@@ -1,0 +1,9 @@
+{
+    "manifest_version": 3,
+    "version": "2.0",
+    "name": "Dice Roler",
+    "action": {
+        "default_popup": "Dice Roller.html",
+        "default_icon": "images/icon.png"
+    }
+}

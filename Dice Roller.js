@@ -1,9 +1,31 @@
-function rollButton() {
-    let resultEl = document.getElementById("result-el") 
-    let amountEl = document.getElementById("amount-el").value
-    let sidesEl = document.getElementById("sides-el").value
-    resultEl.textContent = "Result: " + diceRoller(amountEl,sidesEl)
+let resultEl = document.getElementById("result-el");
+let sides = document.getElementById("sides-el");
+let amount = document.getElementById("amount-el");
+resultEl.textContent = localStorage.getItem("result") || resultEl.textContent;
+amount.value = localStorage.getItem("amount") || amount.value;
+sides.value = localStorage.getItem("sides") || sides.value;
+
+document.getElementById("roll-button").addEventListener("click", function rollButton() {
+    let amountEl = document.getElementById("amount-el").value;
+    let sidesEl = document.getElementById("sides-el").value;
+    resultEl.textContent = "Result: " + diceRoller(amountEl, sidesEl);
+    localStorage.setItem("result", resultEl.textContent);
+    localStorage.setItem("amount", amountEl);
+    localStorage.setItem("sides", sidesEl);
 }
+);
+
+document.getElementById("clear-button").addEventListener("click", function clearButton() {
+    let amountEl = document.getElementById("amount-el");
+    let sidesEl = document.getElementById("sides-el");
+    amountEl.value = null;
+    sidesEl.value = null;
+    resultEl.textContent = "Result:";
+    localStorage.setItem("result", resultEl.textContent);
+    localStorage.setItem("amount", amountEl);
+    localStorage.setItem("sides", sidesEl);
+}
+);
 
 function diceRoller(amount,sides) {
     if (amount < 1) {
@@ -18,5 +40,4 @@ function diceRoller(amount,sides) {
     } else {
         return Math.floor(Math.random() * sides) + 1 + diceRoller(amount - 1, sides)
     }
-
-}
+};
