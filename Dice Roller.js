@@ -1,32 +1,29 @@
-let resultEl = document.getElementById("result-el");
-let sides = document.getElementById("sides-el");
-let amount = document.getElementById("amount-el");
-resultEl.textContent = localStorage.getItem("result") || resultEl.textContent;
-amount.value = localStorage.getItem("amount") || amount.value;
-sides.value = localStorage.getItem("sides") || sides.value;
+//creates variables for the input fields and result value
+const amount = document.getElementById("amount-el");
+const sides = document.getElementById("sides-el");
+const result = document.getElementById("result-el");
 
-document.getElementById("roll-button").addEventListener("click", function rollButton() {
-    let amountEl = document.getElementById("amount-el").value;
-    let sidesEl = document.getElementById("sides-el").value;
-    resultEl.textContent = "Result: " + diceRoller(amountEl, sidesEl);
-    localStorage.setItem("result", resultEl.textContent);
-    localStorage.setItem("amount", amountEl);
-    localStorage.setItem("sides", sidesEl);
-}
-);
+//fetches local storage key/values and updates input fields and result value
+amount.value = localStorage.getItem("amount")
+sides.value = localStorage.getItem("sides")
+result.textContent = localStorage.getItem("result")
 
-document.getElementById("clear-button").addEventListener("click", function clearButton() {
+//ROLL BUTTON: 
+//on click -> 
+//---executes diceRoller() 
+//---modifies result text
+//---stores field and result data in local storage
+document.getElementById("roll-button").addEventListener("click", function () {
     let amountEl = document.getElementById("amount-el");
     let sidesEl = document.getElementById("sides-el");
-    amountEl.value = null;
-    sidesEl.value = null;
-    resultEl.textContent = "Result:";
-    localStorage.setItem("result", resultEl.textContent);
-    localStorage.setItem("amount", amountEl);
-    localStorage.setItem("sides", sidesEl);
+    result.textContent = "Result: " + diceRoller(amountEl.value, sidesEl.value);
+    localStorage.setItem("amount", amountEl.value);
+    localStorage.setItem("sides", sidesEl.value);
+    localStorage.setItem("result", result.textContent);
 }
 );
 
+//rolls dice and returns the summed value
 function diceRoller(amount,sides) {
     if (amount < 1) {
         console.log(amount)
@@ -41,3 +38,16 @@ function diceRoller(amount,sides) {
         return Math.floor(Math.random() * sides) + 1 + diceRoller(amount - 1, sides)
     }
 };
+
+//CLEAR BUTTON: 
+//on click -> 
+//---clears input fields, result value, and local storage key/values
+document.getElementById("clear-button").addEventListener("click", function() {
+    amount.value = null;
+    sides.value = null;
+    result.textContent = "Result:";
+    localStorage.setItem("amount", amount.value);
+    localStorage.setItem("sides", sides.value);
+    localStorage.setItem("result", result.textContent);
+}
+);
