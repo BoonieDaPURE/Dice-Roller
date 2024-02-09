@@ -1,3 +1,7 @@
+html {
+    color-scheme: dark;
+}
+
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
     background-image: url("images/background.jpg");
