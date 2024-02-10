@@ -14,7 +14,9 @@ program start ->
 amount.value = localStorage.getItem("amount")
 sides.value = localStorage.getItem("sides")
 result.textContent = localStorage.getItem("result")
-
+if (localStorage.getItem("result") == null) {
+    result.textContent = "Result:"
+}
 /*
 ROLL BUTTON: 
 on click -> 
