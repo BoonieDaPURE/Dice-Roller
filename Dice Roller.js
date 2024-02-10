@@ -4,6 +4,7 @@ const sides = document.getElementById("sides-el");
 const result = document.getElementById("result-el");
 
 // Fetch from local storage and update UI
+// js:10 - If there's no previous result in localStorage, set the default text
 amount.value = localStorage.getItem("amount");
 sides.value = localStorage.getItem("sides");
 result.textContent = localStorage.getItem("result") || "Result:";
