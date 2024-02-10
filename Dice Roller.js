@@ -1,67 +1,33 @@
-/*
-program start ->
-creates variables for the input fields and result value
-*/
+// Variables for input fields and result
 const amount = document.getElementById("amount-el");
 const sides = document.getElementById("sides-el");
 const result = document.getElementById("result-el");
 
-/*
-program start ->
----fetches local storage key/values 
----updates input fields and result value
-*/
-amount.value = localStorage.getItem("amount")
-sides.value = localStorage.getItem("sides")
-result.textContent = localStorage.getItem("result")
-if (localStorage.getItem("result") == null) {
-    result.textContent = "Result:"
-}
-/*
-ROLL BUTTON: 
-on click -> 
----executes diceRoller() 
----modifies result text
----stores field and result data in local storage
-*/
+// Fetch from local storage and update UI
+amount.value = localStorage.getItem("amount");
+sides.value = localStorage.getItem("sides");
+result.textContent = localStorage.getItem("result") || "Result:";
+
+// Roll button event: Execute dice roll, update result, and save to local storage
 document.getElementById("roll-button").addEventListener("click", function () {
-    let amountEl = document.getElementById("amount-el");
-    let sidesEl = document.getElementById("sides-el");
-    result.textContent = "Result: " + diceRoller(amountEl.value, sidesEl.value);
-    localStorage.setItem("amount", amountEl.value);
-    localStorage.setItem("sides", sidesEl.value);
+    result.textContent = "Result: " + diceRoller(amount.value, sides.value);
+    localStorage.setItem("amount", amount.value);
+    localStorage.setItem("sides", sides.value);
     localStorage.setItem("result", result.textContent);
 });
 
-/*
-called by ROLL BUTTON ->
-rolls dice and returns the summed value
-*/
-function diceRoller(amount,sides) {
-    if (amount < 1) {
-        console.log(amount)
-        return "No dice detected"
-    }
-    if (amount % 1 != 0 || sides % 1 !=0) {
-        return "Broken dice detected"
-    }
-    if (amount == 1) {
-        return Math.floor(Math.random() * sides) + 1
-    } else {
-        return Math.floor(Math.random() * sides) + 1 + diceRoller(amount - 1, sides)
-    }
+// Dice roller function: Simulate rolling dice and return summed value
+function diceRoller(amount, sides) {
+    if (amount < 1 || amount % 1 !== 0 || sides % 1 !== 0) return "Invalid input";
+    let total = 0;
+    for (let i = 0; i < amount; i++) total += Math.floor(Math.random() * sides) + 1;
+    return total;
 };
 
-/*
-CLEAR BUTTON: 
-on click -> 
----clears input fields, result value, and local storage key/values
-*/
+// Clear button event: Clear input fields, result, and local storage
 document.getElementById("clear-button").addEventListener("click", function() {
     amount.value = null;
     sides.value = null;
     result.textContent = "Result:";
-    localStorage.setItem("amount", amount.value);
-    localStorage.setItem("sides", sides.value);
-    localStorage.setItem("result", result.textContent);
+    localStorage.clear();
 });
