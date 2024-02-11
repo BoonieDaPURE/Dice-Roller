@@ -18,11 +18,19 @@ document.getElementById("roll-button").addEventListener("click", function () {
 });
 
 // Dice roller function: Simulate rolling dice and return summed value
-function diceRoller(amount, sides) {
-    if (amount < 1 || amount % 1 !== 0 || sides % 1 !== 0) return "Invalid input";
-    let total = 0;
-    for (let i = 0; i < amount; i++) total += Math.floor(Math.random() * sides) + 1;
-    return total;
+function diceRoller(amount,sides) {
+    if (amount < 1) {
+        console.log(amount)
+        return "No dice detected"
+    }
+    if (amount % 1 != 0 || sides % 1 !=0) {
+        return "Broken dice detected"
+    }
+    if (amount == 1) {
+        return Math.floor(Math.random() * sides) + 1
+    } else {
+        return Math.floor(Math.random() * sides) + 1 + diceRoller(amount - 1, sides)
+    }
 };
 
 // Clear button event: Clear input fields, result, and local storage

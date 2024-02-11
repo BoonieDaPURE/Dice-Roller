@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "version": "2.4",
+    "version": "2.5",
     "name": "Dice Roler",
     "action": {
         "default_popup": "Dice Roller.html",
